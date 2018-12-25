@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "staging": "rent-a-car-sofia",
+    "default": "rent-a-car-sofia"
+  }
+}

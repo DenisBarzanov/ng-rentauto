@@ -1,0 +1,22 @@
+.full-width-table {
+  width: 100%;
+}
+
+.car-image {
+  width: 400px;
+}
+
+.centered-table-div {
+  /*text-align: center;*/
+  margin: 0 auto;
+}
+
+mat-cell {
+  display: flex !important;
+  justify-content: center !important;
+}
+
+mat-header-cell {
+  display: flex;
+  justify-content: center;
+}
