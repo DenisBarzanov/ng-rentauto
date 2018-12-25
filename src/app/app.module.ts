@@ -14,8 +14,18 @@ import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {HttpClientModule} from '@angular/common/http';
 import {InMemoryDataService} from './in-memory-data.service';
 import {LayoutModule} from '@angular/cdk/layout';
-import {MatButtonModule, MatIconModule, MatListModule, MatSidenavModule, MatToolbarModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatIconModule,
+  MatListModule,
+  MatPaginatorModule,
+  MatSidenavModule,
+  MatSortModule,
+  MatTableModule,
+  MatToolbarModule
+} from '@angular/material';
 import {AdminNavComponent} from './admin-nav/admin-nav.component';
+import { MatTableComponent } from './mat-table/mat-table.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +36,7 @@ import {AdminNavComponent} from './admin-nav/admin-nav.component';
     CarDetailComponent,
     MessagesComponent,
     AdminNavComponent,
+    MatTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +61,13 @@ import {AdminNavComponent} from './admin-nav/admin-nav.component';
 
     MatIconModule,
 
-    MatListModule
+    MatListModule,
+
+    MatTableModule,
+
+    MatPaginatorModule,
+
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]
