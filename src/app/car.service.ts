@@ -22,7 +22,7 @@ export class CarService {
   getCars(): Observable<Car[]> {
     return this.http.get<Car[]>(this.carsUrl)
       .pipe(
-        tap(_ => this.log('fetched heroes')),
+        tap(() => this.log('fetched heroes')),
         catchError(this.handleError('getCars', []))
       );
   }
@@ -30,14 +30,14 @@ export class CarService {
   getCar(id: number) {
     const url = `${this.carsUrl}/${id}`;
     return this.http.get<Car>(url).pipe(
-      tap(_ => this.log(`fetched hero id=${id}`)),
+      tap(() => this.log(`fetched hero id=${id}`)),
       catchError(this.handleError<Car>(`getHero id=${id}`))
     );
   }
 
   /** Log a HeroService message with the MessageService */
   private log(message: string) {
-    this.messageService.add(`CarService: ${message}`);
+    this.messageService.message = `CarService: ${message}`;
   }
 
   /**
@@ -62,7 +62,7 @@ export class CarService {
 
   updateCar(car: Car) {
     return this.http.put(this.carsUrl, car, httpOptions).pipe(
-      tap(_ => this.log(`updated hero id=${car.id}`)),
+      tap(() => this.log(`updated hero id=${car.id}`)),
       catchError(this.handleError<any>('updateHero'))
     );
   }
@@ -80,7 +80,7 @@ export class CarService {
     const url = `${this.carsUrl}/${id}`;
 
     return this.http.delete<Car>(url, httpOptions).pipe(
-      tap(_ => this.log(`deleted hero id=${id}`)),
+      tap(() => this.log(`deleted hero id=${id}`)),
       catchError(this.handleError<Car>('deleteCar'))
     );
   }

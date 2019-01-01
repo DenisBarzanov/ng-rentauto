@@ -16,16 +16,22 @@ import {InMemoryDataService} from './in-memory-data.service';
 import {LayoutModule} from '@angular/cdk/layout';
 import {
   MatButtonModule,
+  MatDialogModule,
   MatIconModule,
+  MatInputModule,
   MatListModule,
   MatPaginatorModule,
+  MatSelectModule,
   MatSidenavModule,
   MatSortModule,
   MatTableModule,
   MatToolbarModule
 } from '@angular/material';
 import {AdminNavComponent} from './admin-nav/admin-nav.component';
-import { MatTableComponent } from './mat-table/mat-table.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {DeleteAreYouSureDialogComponent} from './cars/delete-are-you-sure-dialog/delete-are-you-sure-dialog.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 
 @NgModule({
   declarations: [
@@ -36,7 +42,7 @@ import { MatTableComponent } from './mat-table/mat-table.component';
     CarDetailComponent,
     MessagesComponent,
     AdminNavComponent,
-    MatTableComponent,
+    DeleteAreYouSureDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,33 +50,30 @@ import { MatTableComponent } from './mat-table/mat-table.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-
+    MatFormFieldModule,
+    MatDialogModule,
 // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
 // and returns simulated server responses.
 // Remove it when a real server is ready to receive requests.
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, {dataEncapsulation: false}),
-
     LayoutModule,
-
     MatToolbarModule,
-
     MatButtonModule,
-
     MatSidenavModule,
-
     MatIconModule,
-
     MatListModule,
-
     MatTableModule,
-
     MatPaginatorModule,
-
-    MatSortModule
+    MatSortModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
+    MatSnackBarModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DeleteAreYouSureDialogComponent]
 })
 export class AppModule {
 }

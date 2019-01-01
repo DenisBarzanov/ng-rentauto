@@ -3,20 +3,36 @@
 }
 
 .car-image {
-  width: 400px;
+  width: 100%;
 }
 
-.centered-table-div {
-  /*text-align: center;*/
-  margin: 0 auto;
+/* Structure */
+.example-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  overflow: auto;
+  height: calc(100vh - 64px);
+  /*position: absolute;;*/
 }
 
-mat-cell {
+
+mat-header-cell {
   display: flex !important;
   justify-content: center !important;
 }
 
-mat-header-cell {
+mat-cell {
   display: flex;
   justify-content: center;
+}
+
+body {
+  overflow: hidden;
+}
+
+.mat-paginator-sticky {
+  bottom: 0;
+  position: sticky;
+  z-index: 10;
 }

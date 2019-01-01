@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-example-nav',
+  selector: 'app-admin-nav',
   templateUrl: './admin-nav.component.html',
   styleUrls: ['./admin-nav.component.css']
 })

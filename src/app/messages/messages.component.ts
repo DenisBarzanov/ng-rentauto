@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MessageService} from '../message.service';
 
 @Component({
@@ -8,9 +8,15 @@ import {MessageService} from '../message.service';
 })
 export class MessagesComponent implements OnInit {
 
-  constructor(public messageService: MessageService) { }
+  constructor(public messageService: MessageService) {
+  }
 
   ngOnInit() {
+    // this.messageService.dataStream.subscribe(message => {
+    //   const snackBarRef = this.snackBar.open(message, '', {
+    //     duration: 3000
+    //   });
+    // });
   }
 
 }

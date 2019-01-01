@@ -8,3 +8,7 @@ body {
   height: 100%;
   margin: 0;
 }
+
+*:not(mat-icon) {
+  font-family: "Comic Sans MS", cursive, sans-serif !important;
+}
