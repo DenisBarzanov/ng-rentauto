@@ -1,0 +1,18 @@
+<div style="text-align: center;">
+  <h1 mat-dialog-title>Confirm</h1>
+  <div style="overflow: visible" mat-dialog-content>
+    <div style="margin-bottom: 10px;">
+      Are you sure you wish to delete car with name:
+      <br/> {{car.name}}
+    </div>
+    <div>
+      <img [src]="car.img_url" alt="car image" style="max-width: 100%"/>
+    </div>
+    <div>
+      <div mat-dialog-actions style="display: flex; justify-content: center;">
+        <button mat-raised-button color="primary" (click)="dialogRef.close(true)">Confirm</button>
+        <button mat-button (click)="dialogRef.close(false)">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
