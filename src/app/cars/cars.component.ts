@@ -11,7 +11,6 @@ import {DeleteAreYouSureDialogComponent} from './delete-are-you-sure-dialog/dele
   templateUrl: 'cars.component.html',
   styleUrls: ['cars.component.css']
 })
-
 export class CarsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -20,7 +19,7 @@ export class CarsComponent implements OnInit {
   dialogRef: MatDialogRef<DeleteAreYouSureDialogComponent>;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['img_url', 'id', 'name', 'delete'];
+  displayedColumns = ['img_url', 'id', 'name', 'pricePerDay', 'transmission', 'delete'];
 
   constructor(private carService: CarService, public dialog: MatDialog, public snackBar: MatSnackBar) {
   }
@@ -47,19 +46,18 @@ export class CarsComponent implements OnInit {
 
   async delete(car: Car) {
     let deleted = false;
-    const time = 4000;
+    const time = 4 * 1000;
     let currentTime;
     let timeout;
     if (await this.confirmDeleteOf(car)) {
       this.dataSource.delete(car); // first delete it in the view
-      deleted = false;
-      currentTime = (new Date()).getTime();
+      currentTime = Date.now();
       timeout = setTimeout(() => {
         deleted = true;
         this.carService.deleteCar(car).subscribe(); // then delete it in the db
       }, time);
       const snackBarRef = this.snackBar.open(`Deleted car with name: ${car.name}`, 'Undo', {
-        duration: time - ((new Date()).getTime() - currentTime) // account for the time that has already passed
+        duration: time - (Date.now() - currentTime) // account for the time that has already passed
       }); // then show the snackbar at the bottom
 
 

@@ -1,53 +1,58 @@
-<!--<div>-->
-  <!--<label>Car name:-->
-    <!--<input #carName/>-->
-  <!--</label>-->
-  <!--&lt;!&ndash; (click) passes input value to add() and then clears the input &ndash;&gt;-->
-  <!--<button (click)="add(carName.value); carName.value=''">-->
-    <!--add-->
-  <!--</button>-->
-<!--</div>-->
+<div class="mat-elevation-z8">
+  <div class="example-container">
+    <table [dataSource]="dataSource" aria-label="Elements" mat-table matSort>
 
-<!--<h2>My Cars</h2>-->
-<div class="mat-elevation-z8 example-container">
-  <mat-table class="full-width-table" [dataSource]="dataSource" matSort aria-label="Elements">
+      <!-- Image Column -->
+      <ng-container matColumnDef="img_url" sticky>
+        <th *matHeaderCellDef mat-header-cell>Image</th>
+        <td *matCellDef="let car" mat-cell>
+          <img [src]="car.img_url" alt="car image" class="car-image" draggable="false"/>
+        </td>
+      </ng-container>
 
-    <!-- Image Column -->
-    <ng-container matColumnDef="img_url" >
-      <mat-header-cell *matHeaderCellDef>Image</mat-header-cell>
-      <mat-cell *matCellDef="let car">
-        <img [src]="car.img_url" alt="car image" class="car-image" draggable="false"/>
-      </mat-cell>
-    </ng-container>
+      <!-- Id Column -->
+      <ng-container matColumnDef="id">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header>Id</th>
+        <td *matCellDef="let car" mat-cell>{{car.id}}</td>
+      </ng-container>
 
-    <!-- Id Column -->
-    <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
-      <mat-cell *matCellDef="let car">{{car.id}}</mat-cell>
-    </ng-container>
+      <!--Name Column -->
+      <ng-container matColumnDef="name">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header>Name</th>
+        <td *matCellDef="let car" mat-cell>{{car.name}}</td>
+      </ng-container>
 
-     <!--Name Column -->
-    <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
-      <mat-cell *matCellDef="let car">{{car.name}}</mat-cell>
-    </ng-container>
+      <!--Name Column -->
+      <ng-container matColumnDef="pricePerDay">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header>PricePerDay</th>
+        <td *matCellDef="let car" mat-cell>{{car.pricePerDay}}</td>
+      </ng-container>
 
-    <ng-container matColumnDef="delete" >
-      <mat-header-cell *matHeaderCellDef></mat-header-cell>
-      <mat-cell *matCellDef="let car">
-        <button mat-raised-button color="primary" (click)="delete(car)">Delete</button>
-      </mat-cell>
-    </ng-container>
+      <!--Name Column -->
+      <ng-container matColumnDef="transmission">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header>Transmission</th>
+        <td *matCellDef="let car" mat-cell>{{car.transmission}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="delete" stickyEnd>
+        <th *matHeaderCellDef mat-header-cell></th>
+        <td *matCellDef="let car" mat-cell>
+          <button (click)="delete(car)" color="primary" mat-raised-button>Delete</button>
+        </td>
+      </ng-container>
 
 
-    <mat-header-row *matHeaderRowDef="displayedColumns;sticky:true;"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
+      <tr *matHeaderRowDef="displayedColumns; sticky: true;" mat-header-row></tr>
+      <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+    </table>
+  </div>
 
   <mat-paginator #paginator
                  [length]="dataSource?.cars.length"
                  [pageIndex]="0"
                  [pageSize]="5"
-                 [pageSizeOptions]="[1, 2, 3, 5, 10, 25]">
+                 [pageSizeOptions]="[2, 3, 5, 10, 25]">
   </mat-paginator>
 </div>
+
+

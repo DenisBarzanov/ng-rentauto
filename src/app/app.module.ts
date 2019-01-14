@@ -32,7 +32,6 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {DeleteAreYouSureDialogComponent} from './cars/delete-are-you-sure-dialog/delete-are-you-sure-dialog.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 
-
 @NgModule({
   declarations: [
     AppComponent,

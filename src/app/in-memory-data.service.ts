@@ -1,6 +1,6 @@
 import {InMemoryDbService} from 'angular-in-memory-web-api';
 import {Injectable} from '@angular/core';
-import {Car} from './car';
+import {Car, Transmisson} from './car';
 
 @Injectable({
   providedIn: 'root',
@@ -9,16 +9,76 @@ export class InMemoryDataService implements InMemoryDbService {
 
   createDb() {
     const cars: Car[] = [
-      {id: 10, name: 'Merceder Carerra', img_url: 'http://www.autospies.com/images/users/Agent009/main/caliber-6016.jpg'},
-      {id: 11, name: 'Mr. Nice', img_url: 'https://images.summitmedia-digital.com/topgear/images/2017/07/07/tint-main.jpg'},
-      {id: 12, name: 'Narco', img_url: 'http://autonews.gasgoo.com/resource/editor/%E5%A5%87%E7%91%9EA3.jpg'},
-      {id: 13, name: 'Bombasto', img_url: 'https://blogs.ubc.ca/erickyao/files/2010/11/Honda.jpg'},
-      {id: 14, name: 'Mr. Nice', img_url: 'https://images.summitmedia-digital.com/topgear/images/2017/07/07/tint-main.jpg'},
-      {id: 15, name: 'Narco', img_url: 'http://autonews.gasgoo.com/resource/editor/%E5%A5%87%E7%91%9EA3.jpg'},
-      {id: 16, name: 'Bombasto', img_url: 'https://blogs.ubc.ca/erickyao/files/2010/11/Honda.jpg'},
-      {id: 17, name: 'Mr. Nice', img_url: 'https://images.summitmedia-digital.com/topgear/images/2017/07/07/tint-main.jpg'},
-      {id: 18, name: 'Narco', img_url: 'http://autonews.gasgoo.com/resource/editor/%E5%A5%87%E7%91%9EA3.jpg'},
-      {id: 19, name: 'Bombasto', img_url: 'https://blogs.ubc.ca/erickyao/files/2010/11/Honda.jpg'},
+      {
+        id: 10,
+        name: 'Merceder Carerra',
+        img_url: 'http://www.autospies.com/images/users/Agent009/main/caliber-6016.jpg',
+        pricePerDay: 5,
+        transmission: Transmisson.AUTOMATIC
+      },
+      {
+        id: 11,
+        name: 'Mr. Nice',
+        img_url: 'https://images.summitmedia-digital.com/topgear/images/2017/07/07/tint-main.jpg',
+        pricePerDay: 5,
+        transmission: Transmisson.MANUAL
+      },
+      {
+        id: 12,
+        name: 'Narco',
+        img_url: 'http://autonews.gasgoo.com/resource/editor/%E5%A5%87%E7%91%9EA3.jpg',
+        pricePerDay: 5,
+        transmission: Transmisson.MANUAL
+      },
+      {
+        id: 13,
+        name: 'Bombasto',
+        img_url: 'https://blogs.ubc.ca/erickyao/files/2010/11/Honda.jpg',
+        pricePerDay: 5,
+        transmission: Transmisson.MANUAL
+      },
+      {
+        id: 14,
+        name: 'Mr. Nice',
+        img_url: 'https://images.summitmedia-digital.com/topgear/images/2017/07/07/tint-main.jpg',
+        pricePerDay: 5,
+        transmission: Transmisson.MANUAL
+      },
+      {
+        id: 15,
+        name: 'Narco',
+        img_url: 'http://autonews.gasgoo.com/resource/editor/%E5%A5%87%E7%91%9EA3.jpg',
+        pricePerDay: 5,
+        transmission: Transmisson.MANUAL
+      },
+      {
+        id: 16,
+        name: 'Bombasto',
+        img_url: 'https://blogs.ubc.ca/erickyao/files/2010/11/Honda.jpg',
+        pricePerDay: 5,
+        transmission: Transmisson.MANUAL
+      },
+      {
+        id: 17,
+        name: 'Mr. Nice',
+        img_url: 'https://images.summitmedia-digital.com/topgear/images/2017/07/07/tint-main.jpg',
+        pricePerDay: 5,
+        transmission: Transmisson.MANUAL
+      },
+      {
+        id: 18,
+        name: 'Narco',
+        img_url: 'http://autonews.gasgoo.com/resource/editor/%E5%A5%87%E7%91%9EA3.jpg',
+        pricePerDay: 5,
+        transmission: Transmisson.MANUAL
+      },
+      {
+        id: 19,
+        name: 'Bombasto',
+        img_url: 'https://blogs.ubc.ca/erickyao/files/2010/11/Honda.jpg',
+        pricePerDay: 5,
+        transmission: Transmisson.MANUAL
+      },
       // {id: 14, name: 'Celeritas'},
       // {id: 15, name: 'Magneta'},
       // {id: 16, name: 'RubberMan'},

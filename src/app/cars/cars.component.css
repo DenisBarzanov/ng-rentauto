@@ -1,38 +1,38 @@
-.full-width-table {
-  width: 100%;
-}
-
 .car-image {
   width: 100%;
+  max-width: 500px;
 }
 
 /* Structure */
 .example-container {
-  display: flex;
-  flex-direction: column;
+  /*display: flex;*/
+  /*flex-direction: column;*/
   min-width: 300px;
+  max-height: calc(100vh - 64px - 56px);
+  height: 100%;
+  width: 100%;
   overflow: auto;
-  height: calc(100vh - 64px);
-  /*position: absolute;;*/
+  overflow-x: scroll;
 }
 
-
-mat-header-cell {
-  display: flex !important;
-  justify-content: center !important;
+td.mat-column-delete, th.mat-column-delete {
+  width: 10vw !important;
 }
 
-mat-cell {
-  display: flex;
-  justify-content: center;
+td[class*="mat-column"], th[class*="mat-column"] {
+  width: 20vw;
 }
 
-body {
-  overflow: hidden;
+td.mat-column-img_url {
+  padding-right: 30px;
 }
 
-.mat-paginator-sticky {
-  bottom: 0;
-  position: sticky;
-  z-index: 10;
+th.mat-header-cell:first-child {
+  padding-right: 30px;
 }
+
+table {
+  /*text-align: center !important;*/
+  width: max-content;
+}
+
