@@ -1,0 +1,57 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="!(isHandset$ | async)">
+    <mat-toolbar color="primary">Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="admin/cars">Cars</a>
+      <a mat-list-item href="#">Link 2</a>
+      <a mat-list-item href="#">Link 3</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>ng-rentauto</span>
+      <span class="spacer"></span>
+      <button mat-button></button>
+      <div class="providers-container">
+        <ngx-auth-firebaseui-providers *ngIf="!(auth.user$ | async)" [providers]="['google']"
+                                       [theme]="theme.MINI_FAB"></ngx-auth-firebaseui-providers>
+        <button *ngIf="auth.user$ | async as user" mat-button routerLink="/account">Hello, {{user.displayName}}</button>
+        <!--<div *ngIf="auth.user$ | async; then authenticated else guest">-->
+        <!--&lt;!&ndash; template will replace this div &ndash;&gt;-->
+        <!--</div>-->
+
+
+        <!--&lt;!&ndash; User NOT logged in &ndash;&gt;-->
+        <!--<ng-template #guest>-->
+        <!--<button mat-button (click)="auth.googleSignIn()">-->
+        <!--<mat-icon class="fa fa-google" aria-hidden="true"></mat-icon>-->
+        <!--Connect Google-->
+        <!--</button>-->
+        <!--</ng-template>-->
+
+        <!--&lt;!&ndash; User logged in &ndash;&gt;-->
+        <!--<ng-template #authenticated>-->
+        <!--<div *ngIf="auth.user$ | async as user" id="auth-user-div">-->
+        <!--<h3>Howdy, {{ user.displayName }}</h3>-->
+        <!--<img class="google-avatar" [src]="user.photoURL"/>-->
+        <!--&lt;!&ndash;<p>UID: {{ user.uid }}</p>&ndash;&gt;-->
+        <!--<button mat-button (click)="auth.signOut()">Logout</button>-->
+        <!--</div>-->
+        <!--</ng-template>-->
+      </div>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

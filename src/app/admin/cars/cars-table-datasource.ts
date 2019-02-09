@@ -2,10 +2,10 @@ import {DataSource} from '@angular/cdk/collections';
 import {MatPaginator, MatSort} from '@angular/material';
 import {map} from 'rxjs/operators';
 import {BehaviorSubject, merge, Observable} from 'rxjs';
-import {Car} from '../car';
+import {Car} from '../../models/car';
 
 // TODO: Replace this with your own cars model type
-export type DataTableItem = Car;
+type DataTableItem = Car;
 
 /**
  * Data source for the DataTable view. This class should
@@ -28,8 +28,14 @@ export class CarsTableDataSource extends DataSource<DataTableItem> {
     this.dataStream.next(v);
   }
 
-  add(car: Car) {
+  addCar(car: Car) {
     this.cars = [car, ...this.cars];
+  }
+
+  updateCar(car: Car) {
+    const carIndex = this.cars.findIndex(c => c.id === car.id);
+    this.cars[carIndex] = car;
+    this.cars = [...this.cars];
   }
 
   delete(car: Car) {

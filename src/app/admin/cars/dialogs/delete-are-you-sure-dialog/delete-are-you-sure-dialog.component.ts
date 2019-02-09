@@ -1,7 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
-import {CarsComponent} from '../cars.component';
-import {Car} from '../../car';
+import {Car} from '../../../../models/car';
 
 export interface DialogData {
   car: Car;
@@ -16,7 +15,7 @@ export class DeleteAreYouSureDialogComponent {
   car: Car;
 
   constructor(
-    public dialogRef: MatDialogRef<CarsComponent>,
+    public dialogRef: MatDialogRef<DeleteAreYouSureDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {
   }
 }

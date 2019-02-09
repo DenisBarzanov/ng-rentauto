@@ -4,7 +4,7 @@
 }
 
 /* Structure */
-.example-container {
+.table-container {
   /*display: flex;*/
   /*flex-direction: column;*/
   min-width: 300px;
@@ -23,16 +23,34 @@ td[class*="mat-column"], th[class*="mat-column"] {
   width: 20vw;
 }
 
-td.mat-column-img_url {
-  padding-right: 30px;
-}
+/*td.mat-column-img_url {*/
+/*padding-right: 30px;*/
+/*}*/
 
-th.mat-header-cell:first-child {
-  padding-right: 30px;
-}
+/*th.mat-header-cell:first-child {*/
+/*padding-right: 30px;*/
+/*}*/
 
 table {
-  /*text-align: center !important;*/
+  text-align: center;
   width: max-content;
 }
 
+::ng-deep .mat-sort-header-container {
+  display: flex;
+  justify-content: center;
+}
+
+.mat-header-cell {
+  text-align: center;
+}
+
+.car-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.option-button {
+  margin-top: 5px;
+}

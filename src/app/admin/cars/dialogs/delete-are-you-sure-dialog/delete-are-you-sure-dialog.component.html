@@ -1,15 +1,15 @@
-<div style="text-align: center;">
+<div class="dialog-container">
   <h1 mat-dialog-title>Confirm</h1>
   <div style="overflow: visible" mat-dialog-content>
-    <div style="margin-bottom: 10px;">
+    <div class="question-prompt">
       Are you sure you wish to delete car with name:
       <br/> {{car.name}}
     </div>
     <div>
-      <img [src]="car.img_url" alt="car image" style="max-width: 100%"/>
+      <img [src]="car.img_url" alt="car image" class="question-image"/>
     </div>
     <div>
-      <div mat-dialog-actions style="display: flex; justify-content: center;">
+      <div class="action-buttons-container" mat-dialog-actions>
         <button mat-raised-button color="primary" (click)="dialogRef.close(true)">Confirm</button>
         <button mat-button (click)="dialogRef.close(false)">Cancel</button>
       </div>

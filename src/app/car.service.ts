@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
-import {Car} from './car';
-import {MessageService} from './message.service';
+import {Car} from './models/car';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {catchError, tap} from 'rxjs/operators';
 
@@ -15,8 +14,7 @@ const httpOptions = {
 export class CarService {
   private carsUrl = 'api/cars';  // URL to web api
   constructor(
-    private http: HttpClient,
-    private messageService: MessageService) {
+    private http: HttpClient) {
   }
 
   getCars(): Observable<Car[]> {
@@ -37,7 +35,7 @@ export class CarService {
 
   /** Log a HeroService message with the MessageService */
   private log(message: string) {
-    this.messageService.message = `CarService: ${message}`;
+    console.log(`%c CarService: ${message}`, 'color: brown');
   }
 
   /**

@@ -1,12 +1,12 @@
 <div class="mat-elevation-z8">
-  <div class="example-container">
+  <div class="table-container">
     <table [dataSource]="dataSource" aria-label="Elements" mat-table matSort>
 
       <!-- Image Column -->
       <ng-container matColumnDef="img_url" sticky>
         <th *matHeaderCellDef mat-header-cell>Image</th>
         <td *matCellDef="let car" mat-cell>
-          <img [src]="car.img_url" alt="car image" class="car-image" draggable="false"/>
+          <img [src]="car.img_url" alt="car image" class="car-image"/>
         </td>
       </ng-container>
 
@@ -34,10 +34,15 @@
         <td *matCellDef="let car" mat-cell>{{car.transmission}}</td>
       </ng-container>
 
-      <ng-container matColumnDef="delete" stickyEnd>
-        <th *matHeaderCellDef mat-header-cell></th>
+      <ng-container matColumnDef="options" stickyEnd>
+        <th *matHeaderCellDef mat-header-cell>
+          <button (click)="createCar()" color="primary" mat-raised-button>Create</button>
+        </th>
         <td *matCellDef="let car" mat-cell>
-          <button (click)="delete(car)" color="primary" mat-raised-button>Delete</button>
+          <div class="car-options">
+            <button (click)="edit(car)" class="option-button" color="primary" mat-raised-button>Edit</button>
+            <button (click)="delete(car)" class="option-button" color="primary" mat-raised-button>Delete</button>
+          </div>
         </td>
       </ng-container>
 

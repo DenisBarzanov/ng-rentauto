@@ -1,0 +1,37 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  /*background: inherit;*/
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.spacer {
+  flex: auto;
+}
+
+.google-avatar {
+  height: 100%;
+}
+
+#auth-user-div {
+  height: 100%;
+}
+
+/*.providers-container {*/
+/*width: 30%;*/
+/*}*/
+
+::ng-deep ngx-auth-firebaseui .mat-button-wrapper { /* Some of the icon buttons in the ngx aren't centered properly */
+  vertical-align: middle;
+}

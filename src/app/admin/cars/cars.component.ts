@@ -1,9 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatDialog, MatDialogRef, MatPaginator, MatSnackBar, MatSort} from '@angular/material';
 import {CarsTableDataSource} from './cars-table-datasource';
-import {CarService} from '../car.service';
-import {Car} from '../car';
-import {DeleteAreYouSureDialogComponent} from './delete-are-you-sure-dialog/delete-are-you-sure-dialog.component';
+import {CarService} from '../../car.service';
+import {Car} from '../../models/car';
+import {DeleteAreYouSureDialogComponent} from './dialogs/delete-are-you-sure-dialog/delete-are-you-sure-dialog.component';
+import {EditDialogComponent} from './dialogs/edit-dialog/edit-dialog.component';
 
 
 @Component({
@@ -16,22 +17,33 @@ export class CarsComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   dataSource: CarsTableDataSource;
 
-  dialogRef: MatDialogRef<DeleteAreYouSureDialogComponent>;
+  deleteDialogRef: MatDialogRef<DeleteAreYouSureDialogComponent>;
+  editDialogRef: MatDialogRef<EditDialogComponent>;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['img_url', 'id', 'name', 'pricePerDay', 'transmission', 'delete'];
+  displayedColumns = ['img_url', 'id', 'name', 'pricePerDay', 'transmission', 'options'];
 
   constructor(private carService: CarService, public dialog: MatDialog, public snackBar: MatSnackBar) {
   }
 
-  async confirmDeleteOf(car: Car): Promise<Boolean> {
-    this.dialogRef = this.dialog.open(DeleteAreYouSureDialogComponent, {
+  async dialogConfirmDeleteOf(car: Car): Promise<boolean> {
+    this.deleteDialogRef = this.dialog.open(DeleteAreYouSureDialogComponent, {
       disableClose: false,
       width: '40%',
     });
-    this.dialogRef.componentInstance.car = car;
+    this.deleteDialogRef.componentInstance.car = car;
 
-    return this.dialogRef.afterClosed().toPromise();
+    return this.deleteDialogRef.afterClosed().toPromise();
+  }
+
+  async dialogEditCar(car: Car): Promise<Car> {
+    this.editDialogRef = this.dialog.open(EditDialogComponent, {
+      disableClose: false,
+      width: '60%',
+    });
+    this.editDialogRef.componentInstance.car = car;
+
+    return this.editDialogRef.afterClosed().toPromise();
   }
 
   async ngOnInit() {
@@ -39,17 +51,12 @@ export class CarsComponent implements OnInit {
     this.dataSource = new CarsTableDataSource(this.paginator, this.sort, cars);
   }
 
-  add(car: Car | string) { // todo
-    this.dataSource.add(car as Car);
-    this.carService.addCar(car as Car).subscribe();
-  }
-
   async delete(car: Car) {
     let deleted = false;
     const time = 4 * 1000;
     let currentTime;
     let timeout;
-    if (await this.confirmDeleteOf(car)) {
+    if (await this.dialogConfirmDeleteOf(car)) {
       this.dataSource.delete(car); // first delete it in the view
       currentTime = Date.now();
       timeout = setTimeout(() => {
@@ -65,7 +72,24 @@ export class CarsComponent implements OnInit {
         if (!deleted) {
           clearTimeout(timeout);
         }
-        this.dataSource.add(car);
+        this.dataSource.addCar(car);
+      });
+    }
+  }
+
+  async edit(car: Car) {
+    const editedCar = await this.dialogEditCar({...car}); // spread syntax to get a different reference
+    if (editedCar) {
+      this.dataSource.updateCar(editedCar);
+      this.carService.updateCar(editedCar).subscribe();
+    }
+  }
+
+  async createCar() {
+    const createdCar = await this.dialogEditCar(new Car());
+    if (createdCar) {
+      this.carService.addCar(createdCar).subscribe(savedCar => {
+        this.dataSource.addCar(savedCar);
       });
     }
   }
