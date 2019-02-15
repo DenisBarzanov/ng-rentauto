@@ -1,0 +1,29 @@
+.action-buttons-container {
+  display: flex;
+  justify-content: center;
+}
+
+.dialog-container {
+  text-align: center;
+}
+
+.question-prompt {
+  margin-bottom: 10px;
+}
+
+.question-image {
+  max-width: 100%
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.image-preview-container {
+}
+
+.image-preview {
+  width: 200px;
+  max-width: 100%;
+}

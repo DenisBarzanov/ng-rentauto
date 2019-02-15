@@ -39,7 +39,7 @@
           <button (click)="createCar()" color="primary" mat-raised-button>Create</button>
         </th>
         <td *matCellDef="let car" mat-cell>
-          <div class="car-options">
+          <div fxLayout="column" fxLayoutAlign="center center">
             <button (click)="edit(car)" class="option-button" color="primary" mat-raised-button>Edit</button>
             <button (click)="delete(car)" class="option-button" color="primary" mat-raised-button>Delete</button>
           </div>

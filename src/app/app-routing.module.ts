@@ -3,6 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {CarsComponent} from './admin/cars/cars.component';
 import {AdminGuard} from './auth/admin.guard';
 import {UserComponent} from 'ngx-auth-firebaseui';
+import {BookComponent} from './public/order/book.component';
 
 const routes: Routes = [
   {
@@ -12,9 +13,8 @@ const routes: Routes = [
     ],
     canActivate: [AdminGuard]
   },
-  {
-    path: 'account', component: UserComponent
-  }
+  {path: 'account', component: UserComponent},
+  {path: 'book', component: BookComponent}
 ];
 
 @NgModule({

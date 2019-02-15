@@ -9,7 +9,7 @@
       <img [src]="car.img_url" alt="car image" class="question-image"/>
     </div>
     <div>
-      <div class="action-buttons-container" mat-dialog-actions>
+      <div fxLayout fxLayoutAlign="center" mat-dialog-actions>
         <button mat-raised-button color="primary" (click)="dialogRef.close(true)">Confirm</button>
         <button mat-button (click)="dialogRef.close(false)">Cancel</button>
       </div>
